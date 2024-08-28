@@ -1,7 +1,9 @@
+import Navigation from './Navigation';
+
 const App = () => {
   return (
     <div>
-        App
+      <Navigation></Navigation>
     </div>
   );
 };
