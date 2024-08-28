@@ -4,10 +4,13 @@ const Navigation = () => {
   return (
     <div>
       <div>
-        <Link to="/login">Log In</Link>
+        <Link to="/">Home</Link>
       </div>
       <div>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Login</Link>
+      </div>
+      <div>
+        <Link to="/signup">Signup</Link>
       </div>
     </div>
   );
