@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import AuthContext from '../context/AuthProvider'
 import axios from '../api/axios';
-import { useContext } from 'react';
+import useAuth from '../hooks/useAuth';
 
 const Login = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState([]);
@@ -23,21 +22,20 @@ const Login = () => {
         }
       );
       if (response.status >= 400) {
-        throw new Error('server error'); 
+        throw new Error('server error');
       }
       const data = response.data;
 
-      setUsername('');
       setPassword('');
       if (data.errors) {
         setMessage(data.errors);
       } else {
         setAuth({ username, password, accessToken: data.accessToken });
-        setNavigate(true)
+        setNavigate(true);
       }
     } catch (err) {
       setMessage([{ msg: 'No Server Response' }]);
-    } 
+    }
   };
 
   if (navigate) {
