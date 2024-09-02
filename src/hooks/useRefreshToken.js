@@ -5,11 +5,13 @@ const useRefreshToken = () => {
   const { setAuth } = useAuth();
 
   const refresh = async () => {
-    const response = await axios.post('http://localhost:3000/auth/refresh', {
-      withCredentials: true
-    });
+    const response = await axios.post('http://localhost:3000/auth/refresh');
     setAuth((prev) => {
-      return { ...prev, accessToken: response.data.acessToken };
+      return {
+        ...prev,
+        accessToken: response.data.acessToken,
+        username: response.data.username
+      };
     });
     return response.data.acessToken;
   };
