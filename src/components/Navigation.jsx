@@ -1,8 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import useLogout from '../hooks/useLogout';
 
 const Navigation = () => {
   const { auth } = useAuth();
+  const logout = useLogout();
+  const navigate = useNavigate();
+
+  const signOut = async () => {
+    await logout();
+    navigate('/');
+  }
 
   return (
     <div>
@@ -19,7 +27,10 @@ const Navigation = () => {
           </div>
         </>
       ) : (
-        <div>Hello {auth.username}!</div>
+        <>
+          <div>Hello {auth.username}!</div>
+          <button onClick={signOut}>Log Out</button>
+        </>
       )}
     </div>
   );

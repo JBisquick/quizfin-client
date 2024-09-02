@@ -14,8 +14,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/auth/login',
-        JSON.stringify({ username, password }),
+        '/auth/login',
+        JSON.stringify({ username, password })
       );
       if (response.status >= 400) {
         throw new Error('server error');
