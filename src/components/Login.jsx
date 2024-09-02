@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { setAuth } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState([]);
-  const [navigate, setNavigate] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,20 +27,16 @@ const Login = () => {
       const data = response.data;
 
       setPassword('');
-      if (data.errors) {
+      if (data?.errors) {
         setMessage(data.errors);
       } else {
-        setAuth({ username, password, accessToken: data.accessToken });
-        setNavigate(true);
+        setAuth({ username, accessToken: data.accessToken });
+        navigate('/');
       }
     } catch (err) {
       setMessage([{ msg: 'No Server Response' }]);
     }
   };
-
-  if (navigate) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <>
