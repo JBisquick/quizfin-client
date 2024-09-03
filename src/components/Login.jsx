@@ -26,7 +26,11 @@ const Login = () => {
       if (data?.errors) {
         setMessage(data.errors);
       } else {
-        setAuth({ username, accessToken: data.accessToken });
+        setAuth({
+          username: data.username,
+          accessToken: data.accessToken,
+          id: data.id
+        });
         navigate('/');
       }
     } catch (err) {

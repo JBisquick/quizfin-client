@@ -10,7 +10,7 @@ const Navigation = () => {
   const signOut = async () => {
     await logout();
     navigate('/');
-  }
+  };
 
   return (
     <div>
