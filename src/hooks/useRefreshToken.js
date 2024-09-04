@@ -9,12 +9,12 @@ const useRefreshToken = () => {
     setAuth((prev) => {
       return {
         ...prev,
-        accessToken: response.data.acessToken,
+        accessToken: response.data.accessToken,
         username: response.data.username,
         id: response.data.id
       };
     });
-    return response.data.acessToken;
+    return response.data.accessToken;
   };
 
   return refresh;
