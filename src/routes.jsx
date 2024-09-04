@@ -12,7 +12,7 @@ const routes = [
       { path: 'login', element: <Login /> },
       { path: 'my-quizzes', element: <UserQuizzes /> }
     ]
-  },
+  }
 ];
 
 export default routes;

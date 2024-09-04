@@ -1,5 +1,6 @@
 import { useUserQuizzes } from '../hooks/useData';
 import UserQuizCard from './UserQuizCard';
+import AddQuiz from './AddQuiz';
 import useAuth from '../hooks/useAuth';
 
 const UserQuizzes = () => {
@@ -24,6 +25,7 @@ const UserQuizzes = () => {
           />
         );
       })}
+      <AddQuiz />
     </div>
   );
 };

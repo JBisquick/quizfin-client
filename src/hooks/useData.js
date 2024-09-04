@@ -7,7 +7,7 @@ export const useUserQuizzes = (userId) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect( () => {
+  useEffect(() => {
     const getMyQuizzes = async () => {
       try {
         const response = await axiosPrivate.get(`/quiz/my-quizzes/${userId}`);
@@ -20,7 +20,7 @@ export const useUserQuizzes = (userId) => {
       } catch (error) {
         setError(error);
       }
-    }
+    };
 
     getMyQuizzes();
   }, []);
