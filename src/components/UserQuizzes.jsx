@@ -22,6 +22,7 @@ const UserQuizzes = () => {
             createDate={quiz.createdAt}
             updateDate={quiz.updatedAt}
             published={quiz.published}
+            id={quiz.id}
           />
         );
       })}
