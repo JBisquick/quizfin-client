@@ -28,6 +28,7 @@ const Navigation = () => {
         </>
       ) : (
         <>
+          <Link to="/my-quizzes">My Quizzes</Link>
           <div>Hello {auth.username}!</div>
           <button onClick={signOut}>Log Out</button>
         </>

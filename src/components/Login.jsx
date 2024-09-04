@@ -18,7 +18,7 @@ const Login = () => {
         JSON.stringify({ username, password })
       );
       if (response.status >= 400) {
-        throw new Error('server error');
+        throw new Error('Server Error');
       }
       const data = response.data;
 
