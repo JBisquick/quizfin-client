@@ -1,7 +1,7 @@
 import App from './components/App';
 import ErrorPage from './components/ErrorPage';
 import Login from './components/Login';
-import UserQuizzes from './components/UserQuizzes';
+import UserQuizPage from './components/UserQuizPage';
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       { path: 'login', element: <Login /> },
-      { path: 'my-quizzes', element: <UserQuizzes /> }
+      { path: 'my-quizzes', element: <UserQuizPage /> }
     ]
   }
 ];

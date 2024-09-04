@@ -1,9 +1,9 @@
 import { useUserQuizzes } from '../hooks/useData';
 import UserQuizCard from './UserQuizCard';
-import AddQuiz from './AddQuiz';
+import CreateQuizForm from './CreateQuizForm';
 import useAuth from '../hooks/useAuth';
 
-const UserQuizzes = () => {
+const UserQuizPage = () => {
   const { auth } = useAuth();
   const { userQuizzes, error, loading } = useUserQuizzes(auth.id);
 
@@ -26,9 +26,9 @@ const UserQuizzes = () => {
           />
         );
       })}
-      <AddQuiz />
+      <CreateQuizForm />
     </div>
   );
 };
 
-export default UserQuizzes;
+export default UserQuizPage;

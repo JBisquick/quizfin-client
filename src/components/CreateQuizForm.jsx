@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
-const AddQuiz = () => {
+const CreateQuizForm = () => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
@@ -64,4 +64,4 @@ const AddQuiz = () => {
   );
 };
 
-export default AddQuiz;
+export default CreateQuizForm;
