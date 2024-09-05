@@ -1,6 +1,7 @@
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { useState } from "react";
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const UserQuizCard = ({
   title,
@@ -10,9 +11,10 @@ const UserQuizCard = ({
   published,
   id
 }) => {
-  const axiosPrivate = useAxiosPrivate()
+  const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
+  const toLink = `/my-quizzes/${id}`;
 
   const handleDelete = async (e) => {
     try {
@@ -24,16 +26,16 @@ const UserQuizCard = ({
     } catch (err) {
       setMessage('No Server Response');
     }
-  }
+  };
 
   return (
     <div>
-      <h4>{title}</h4>
+      <h4><Link to={toLink}>{title}</Link></h4>
       <p>{description}</p>
       <p>{createDate}</p>
       <p>{updateDate}</p>
       <p>Published: {published.toString()}</p>
-      <button onClick={handleDelete} >Delete Quiz</button>
+      <button onClick={handleDelete}>Delete Quiz</button>
       <div>{message}</div>
     </div>
   );

@@ -36,7 +36,7 @@ const CreateQuizForm = () => {
       <h2>Create Quiz</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Title: </label>
+          <label htmlFor="title">Title: </label>
           <input
             type="text"
             id="title"
@@ -47,7 +47,7 @@ const CreateQuizForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="description">Password </label>
+          <label htmlFor="description">Description: </label>
           <textarea
             id="description"
             value={description}
