@@ -30,7 +30,9 @@ const UserQuizCard = ({
 
   return (
     <div>
-      <h4><Link to={toLink}>{title}</Link></h4>
+      <h4>
+        <Link to={toLink}>{title}</Link>
+      </h4>
       <p>{description}</p>
       <p>{createDate}</p>
       <p>{updateDate}</p>
