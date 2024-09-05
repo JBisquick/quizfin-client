@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuizQuestions } from '../hooks/useData';
+import EditQuizForm from './EditQuizForm';
 import QuestionCard from './QuestionCard';
 
 const EditQuizPage = () => {
@@ -12,6 +13,13 @@ const EditQuizPage = () => {
   return (
     <div>
       <h2>Edit Quiz</h2>
+      <EditQuizForm
+        initTitle={userQuestions.title}
+        initDescription={userQuestions.description}
+        initPublished={userQuestions.published}
+        id={userQuestions.id}
+      />
+      <h4>Edit Questions</h4>
       {userQuestions.questions.map((question) => {
         return (
           <QuestionCard
