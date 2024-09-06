@@ -11,8 +11,11 @@ const App = () => {
 
   useEffect(() => {
     const verifyRefreshToken = async () => {
-      await refresh();
-      setLoading(false);
+      try {
+        await refresh();
+      } finally {
+        setLoading(false);
+      }
     };
 
     if (!auth?.accessToken) verifyRefreshToken();

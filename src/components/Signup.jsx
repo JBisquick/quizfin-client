@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
-import useAuth from '../hooks/useAuth';
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +41,7 @@ const Signup = () => {
 
   return (
     <>
-      <h2>Login</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username: </label>
