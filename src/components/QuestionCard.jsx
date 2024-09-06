@@ -1,6 +1,7 @@
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import EditQuestionForm from './EditQuestionForm';
 
 const QuestionCard = ({
   question,
@@ -12,6 +13,7 @@ const QuestionCard = ({
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
+  const [display, setDisplay] = useState(false);
 
   const handleDelete = async (e) => {
     try {
@@ -27,16 +29,31 @@ const QuestionCard = ({
     }
   };
 
+  const handleEdit = () => {
+    const newDisplay = display ? false : true;
+    setDisplay(newDisplay);
+  };
+
   return (
-    <div>
-      <div>Question: {question}</div>
-      <div>Correct: {correctAnswer}</div>
-      {incorrectAnswers.map((answer, index) => (
-        <div key={index}>Incorrect: {answer}</div>
-      ))}
-      <button onClick={handleDelete}>Delete Question</button>
-      <div>{message}</div>
-    </div>
+    <>
+      <div>
+        <div>Question: {question}</div>
+        <div>Correct: {correctAnswer}</div>
+        {incorrectAnswers.map((answer, index) => (
+          <div key={index}>Incorrect: {answer}</div>
+        ))}
+        <button onClick={handleEdit}>Edit Question</button>
+        <button onClick={handleDelete}>Delete Question</button>
+        <div>{message}</div>
+      </div>
+      {display ? (
+        <EditQuestionForm
+          initQuestion={{ question, correctAnswer, incorrectAnswers, id }}
+        />
+      ) : (
+        <div></div>
+      )}
+    </>
   );
 };
 

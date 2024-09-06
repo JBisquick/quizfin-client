@@ -1,23 +1,23 @@
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
-const CreateQuestionForm = () => {
+const EditQuestionForm = ({ initQuestion }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const { quizId } = useParams();
-  const [question, setQuestion] = useState('');
-  const [correctAnswer, setCorrectAnswer] = useState('');
-  const [incorrect1, setIncorrect1] = useState('');
-  const [incorrect2, setIncorrect2] = useState('');
-  const [incorrect3, setIncorrect3] = useState('');
+  const [question, setQuestion] = useState(initQuestion.question);
+  const [correctAnswer, setCorrectAnswer] = useState(initQuestion.correctAnswer);
+  const [incorrect1, setIncorrect1] = useState(initQuestion.incorrectAnswers[0]);
+  const [incorrect2, setIncorrect2] = useState(initQuestion.incorrectAnswers[1]);
+  const [incorrect3, setIncorrect3] = useState(initQuestion.incorrectAnswers[2]);
   const [message, setMessage] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosPrivate.post(
-        `/quiz/${quizId}/question`,
+      const response = await axiosPrivate.put(
+        `/quiz/${quizId}/question/${initQuestion.id}`,
         JSON.stringify({
           question,
           correctAnswer,
@@ -43,7 +43,7 @@ const CreateQuestionForm = () => {
 
   return (
     <div>
-      <h4>Create Question</h4>
+      <h4>Edit Question</h4>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="question">Question: </label>
@@ -95,7 +95,7 @@ const CreateQuestionForm = () => {
             required
           />
         </div>
-        <button>Create Question</button>
+        <button>Update</button>
       </form>
       {message.map((error) => (
         <p key={error.msg}>{error.msg}</p>
@@ -104,4 +104,4 @@ const CreateQuestionForm = () => {
   );
 };
 
-export default CreateQuestionForm;
+export default EditQuestionForm;
