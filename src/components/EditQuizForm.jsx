@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
   const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
   const [title, setTitle] = useState(initTitle);
   const [description, setDescription] = useState(initDescription);
   const [published, setPublished] = useState(initPublished);
@@ -25,6 +27,7 @@ const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
         navigate(0);
       }
     } catch (err) {
+      console.log(err);
       setMessage([{ msg: 'No Server Response' }]);
     }
   };
@@ -63,7 +66,7 @@ const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
           <input
             type="checkbox"
             id="published"
-            defaultcheck={published.toString()}
+            checked={published}
             onChange={handleChange}
           />
         </div>

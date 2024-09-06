@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useAxiosPrivate from './useAxiosPrivate';
+import axios from '../api/axios';
 
 export const useUserQuizzes = (userId) => {
   const axiosPrivate = useAxiosPrivate();
@@ -52,4 +53,30 @@ export const useQuizQuestions = (quizId) => {
   }, []);
 
   return { userQuestions, error, loading };
+};
+
+export const useQuizzes = () => {
+  const [quizzes, setQuizzes] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getQuizzes = async () => {
+      try {
+        const response = await axios.get(`/quiz`);
+        if (response.status >= 400) {
+          throw new Error('Server Error');
+        }
+        const data = response.data;
+        setQuizzes(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    getQuizzes();
+  }, []);
+
+  return { quizzes, error, loading };
 };

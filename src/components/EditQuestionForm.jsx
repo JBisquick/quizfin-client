@@ -7,10 +7,18 @@ const EditQuestionForm = ({ initQuestion }) => {
   const navigate = useNavigate();
   const { quizId } = useParams();
   const [question, setQuestion] = useState(initQuestion.question);
-  const [correctAnswer, setCorrectAnswer] = useState(initQuestion.correctAnswer);
-  const [incorrect1, setIncorrect1] = useState(initQuestion.incorrectAnswers[0]);
-  const [incorrect2, setIncorrect2] = useState(initQuestion.incorrectAnswers[1]);
-  const [incorrect3, setIncorrect3] = useState(initQuestion.incorrectAnswers[2]);
+  const [correctAnswer, setCorrectAnswer] = useState(
+    initQuestion.correctAnswer
+  );
+  const [incorrect1, setIncorrect1] = useState(
+    initQuestion.incorrectAnswers[0]
+  );
+  const [incorrect2, setIncorrect2] = useState(
+    initQuestion.incorrectAnswers[1]
+  );
+  const [incorrect3, setIncorrect3] = useState(
+    initQuestion.incorrectAnswers[2]
+  );
   const [message, setMessage] = useState([]);
 
   const handleSubmit = async (e) => {
