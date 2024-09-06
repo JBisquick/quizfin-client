@@ -28,6 +28,8 @@ const EditQuizPage = () => {
             question={question.text}
             correctAnswer={question.correctAnswer}
             incorrectAnswers={question.incorrectAnswer}
+            quizId={userQuestions.id}
+            id={question.id}
           />
         );
       })}
