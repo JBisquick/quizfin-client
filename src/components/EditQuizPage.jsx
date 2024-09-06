@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useQuizQuestions } from '../hooks/useData';
 import EditQuizForm from './EditQuizForm';
 import QuestionCard from './QuestionCard';
+import CreateQuestionForm from './CreateQuestionForm';
 
 const EditQuizPage = () => {
   const { quizId } = useParams();
@@ -30,6 +31,7 @@ const EditQuizPage = () => {
           />
         );
       })}
+      <CreateQuestionForm />
     </div>
   );
 };

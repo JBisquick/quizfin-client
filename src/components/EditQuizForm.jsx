@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { axiosPrivate } from '../api/axios';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
+  const axiosPrivate = useAxiosPrivate();
   const [title, setTitle] = useState(initTitle);
   const [description, setDescription] = useState(initDescription);
   const [published, setPublished] = useState(initPublished);
