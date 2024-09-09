@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import UserQuizPage from './components/UserQuizPage';
 import EditQuizPage from './components/EditQuizPage';
 import HomePage from './components/HomePage';
+import GamePage from './components/GamePage';
 
 const routes = [
   {
@@ -16,7 +17,8 @@ const routes = [
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
       { path: 'my-quizzes', element: <UserQuizPage /> },
-      { path: 'my-quizzes/:quizId', element: <EditQuizPage /> }
+      { path: 'my-quizzes/:quizId', element: <EditQuizPage /> },
+      { path: 'play-quizz/:quizId', element: <GamePage /> }
     ]
   }
 ];
