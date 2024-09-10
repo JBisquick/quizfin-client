@@ -18,7 +18,8 @@ const HomePage = () => {
               description: quiz.description,
               author: quiz.author.username,
               createdAt: quiz.createdAt,
-              updatedAt: quiz.updatedAt
+              updatedAt: quiz.updatedAt,
+              id: quiz.id
             }}
           />
         );

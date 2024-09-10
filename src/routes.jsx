@@ -18,7 +18,7 @@ const routes = [
       { path: 'signup', element: <Signup /> },
       { path: 'my-quizzes', element: <UserQuizPage /> },
       { path: 'my-quizzes/:quizId', element: <EditQuizPage /> },
-      { path: 'play-quizz/:quizId', element: <GamePage /> }
+      { path: 'play-quiz/:quizId', element: <GamePage /> }
     ]
   }
 ];
