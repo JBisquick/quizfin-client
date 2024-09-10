@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Game from './game';
 import { io } from 'socket.io-client';
 const socket = io('http://localhost:3000');
 
 const GamePage = () => {
   const { quizId } = useParams();
   const [room, setRoom] = useState('');
+  const [gameStart, setGameStart] = useState(false);
 
   const joinRoom = () => {
     if (room !== '') socket.emit('join_room', { room, quizId });
   }
+
+  useEffect(() => {
+    socket.on('start_game', () => {setGameStart(true)})
+  }, [socket]);
+
+  if (gameStart) return <><Game socket={socket} /></>
 
   return (
     <div>
