@@ -13,10 +13,16 @@ const GamePage = () => {
     if (room !== '') socket.emit('join_room', { room, quizId });
   };
 
+  const startGame = () => {
+    setGameStart(true);
+  }
+
   useEffect(() => {
-    socket.on('start_game', () => {
-      setGameStart(true);
-    });
+    socket.on('start_game', startGame);
+
+    return () => {
+      socket.off('start_game', startGame);
+    } 
   }, [socket]);
 
   if (gameStart)

@@ -7,6 +7,7 @@ const Game = ({ socket }) => {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [isCorrect, setIsCorrect] = useState('');
+  const [result, setResult] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,27 +19,55 @@ const Game = ({ socket }) => {
     return () => clearTimeout(timer);
   }, [counter]);
 
+  const updateQuestion = (data) => {
+    setQuestion(data.question.question);
+    setAnswers(data.question.answers);
+    setCounter(10);
+    setButtonDisable(false);
+    setIsCorrect('');
+  };
+
+  const updateCorrect = () => {
+    const newScore = scores;
+    newScore[0]++
+    setScores(newScore);
+    setIsCorrect('correct!');
+  }
+
+  const updateIncorrect = () => {
+    setIsCorrect('incorrect!');
+  }
+
+  const updateOpponent = () => {
+    const newScore = scores;
+    newScore[1]++
+    setScores(newScore);
+  }
+
+  const updateGame = (isWinner) => {
+    if (isWinner === 'winner') {
+      setResult('YOU WON!!!!');
+    } else if (isWinner === 'draw') {
+      setResult('A DRAW?! BORING!!!');
+    } else {
+      setResult('Sadly... you lost :(');
+    }
+  }
+
   useEffect(() => {
-    socket.on('send_question', (data) => {
-      setQuestion(data.question.question);
-      setAnswers(data.question.answers);
-      setCounter(10);
-      setButtonDisable(false);
-      setIsCorrect('');
-    });
+    socket.on('send_question', updateQuestion);
+    socket.on('correct', updateCorrect);
+    socket.on('incorrect', updateIncorrect);
+    socket.on('opponent_correct', updateOpponent);
+    socket.on('end_game', updateGame);
 
-    socket.on('correct', () => {
-      setScores([scores[0]++, scores[1]]);
-      setIsCorrect('correct!');
-    })
-
-    socket.on('incorrect', () => {
-      setIsCorrect('incorrect!');
-    })
-
-    socket.on('opponent_correct', () => {
-      setScores([scores[0], scores[1]++]);
-    })
+    return () => {
+      socket.off('send_question', updateQuestion);
+      socket.off('correct', updateCorrect);  
+      socket.off('incorrect', updateIncorrect);  
+      socket.off('opponent_correct', updateOpponent);
+      socket.off('end_game', updateGame);
+    }
   }, [socket]);
 
   const submitAnswer = (answer) => {
@@ -46,10 +75,16 @@ const Game = ({ socket }) => {
     setButtonDisable(true);
   };
 
+  if (result) return (
+    <div>
+      <div>Score: {scores[0]} Opponent Score: {scores[1]}</div>
+      <div>{result}</div>
+    </div>
+  );
+
   return (
     <div>
-      <div>Score: {scores[0]}</div>
-      <div>Opponent Score: {scores[1]}</div>
+      <div>Score: {scores[0]} Opponent Score: {scores[1]}</div>
       <div>{counter}</div>
       <h4>{question}</h4>
       {answers.map((answer) => (
