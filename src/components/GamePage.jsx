@@ -11,19 +11,32 @@ const GamePage = () => {
 
   const joinRoom = () => {
     if (room !== '') socket.emit('join_room', { room, quizId });
-  }
+  };
 
   useEffect(() => {
-    socket.on('start_game', () => {setGameStart(true)})
+    socket.on('start_game', () => {
+      setGameStart(true);
+    });
   }, [socket]);
 
-  if (gameStart) return <><Game socket={socket} /></>
+  if (gameStart)
+    return (
+      <>
+        <Game socket={socket} />
+      </>
+    );
 
   return (
     <div>
       <div>Join the same room in order to play with friend!</div>
-      <input type="text" value={room} onChange={(e) => {setRoom(e.target.value)}} />
-      <button onClick={joinRoom} >Join Room</button>
+      <input
+        type="text"
+        value={room}
+        onChange={(e) => {
+          setRoom(e.target.value);
+        }}
+      />
+      <button onClick={joinRoom}>Join Room</button>
     </div>
   );
 };
