@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Game from './game';
+import Game from '../../components/game';
 import { io } from 'socket.io-client';
 const socket = io('http://localhost:3000');
 
@@ -15,14 +15,14 @@ const GamePage = () => {
 
   const startGame = () => {
     setGameStart(true);
-  }
+  };
 
   useEffect(() => {
     socket.on('start_game', startGame);
 
     return () => {
       socket.off('start_game', startGame);
-    } 
+    };
   }, [socket]);
 
   if (gameStart)

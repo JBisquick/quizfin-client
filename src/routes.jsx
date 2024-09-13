@@ -1,11 +1,11 @@
-import App from './components/App';
+import App from './pages/App';
 import ErrorPage from './components/ErrorPage';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import UserQuizPage from './components/UserQuizPage';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import UserQuizPage from './pages/userQuizzes/UserQuizPage';
 import EditQuizPage from './components/EditQuizPage';
-import HomePage from './components/HomePage';
-import GamePage from './components/GamePage';
+import HomePage from './pages/home/HomePage';
+import GamePage from './pages/game/GamePage';
 
 const routes = [
   {

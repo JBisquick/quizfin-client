@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const Game = ({ socket }) => {
   const [counter, setCounter] = useState(0);
   const [buttonDisable, setButtonDisable] = useState(false);
-  const [scores, setScores] = useState([0, 0])
+  const [scores, setScores] = useState([0, 0]);
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [isCorrect, setIsCorrect] = useState('');
@@ -29,20 +29,20 @@ const Game = ({ socket }) => {
 
   const updateCorrect = () => {
     const newScore = scores;
-    newScore[0]++
+    newScore[0]++;
     setScores(newScore);
     setIsCorrect('correct!');
-  }
+  };
 
   const updateIncorrect = () => {
     setIsCorrect('incorrect!');
-  }
+  };
 
   const updateOpponent = () => {
     const newScore = scores;
-    newScore[1]++
+    newScore[1]++;
     setScores(newScore);
-  }
+  };
 
   const updateGame = (isWinner) => {
     if (isWinner === 'winner') {
@@ -52,7 +52,7 @@ const Game = ({ socket }) => {
     } else {
       setResult('Sadly... you lost :(');
     }
-  }
+  };
 
   useEffect(() => {
     socket.on('send_question', updateQuestion);
@@ -63,28 +63,33 @@ const Game = ({ socket }) => {
 
     return () => {
       socket.off('send_question', updateQuestion);
-      socket.off('correct', updateCorrect);  
-      socket.off('incorrect', updateIncorrect);  
+      socket.off('correct', updateCorrect);
+      socket.off('incorrect', updateIncorrect);
       socket.off('opponent_correct', updateOpponent);
       socket.off('end_game', updateGame);
-    }
+    };
   }, [socket]);
 
   const submitAnswer = (answer) => {
-    socket.emit('send_answer', answer)
+    socket.emit('send_answer', answer);
     setButtonDisable(true);
   };
 
-  if (result) return (
-    <div>
-      <div>Score: {scores[0]} Opponent Score: {scores[1]}</div>
-      <div>{result}</div>
-    </div>
-  );
+  if (result)
+    return (
+      <div>
+        <div>
+          Score: {scores[0]} Opponent Score: {scores[1]}
+        </div>
+        <div>{result}</div>
+      </div>
+    );
 
   return (
     <div>
-      <div>Score: {scores[0]} Opponent Score: {scores[1]}</div>
+      <div>
+        Score: {scores[0]} Opponent Score: {scores[1]}
+      </div>
       <div>{counter}</div>
       <h4>{question}</h4>
       {answers.map((answer) => (

@@ -25,7 +25,7 @@ const App = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="mother-container">
       <Navigation></Navigation>
       <Outlet />
     </div>

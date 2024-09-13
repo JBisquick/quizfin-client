@@ -1,3 +1,8 @@
+.title {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
 .container {
   padding: 15px;
   display: grid;
@@ -34,4 +39,8 @@
     width: 8.125rem;
     height: 6.144rem;
   }
+}
+
+.message {
+  text-align: center;
 }

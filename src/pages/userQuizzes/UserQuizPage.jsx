@@ -1,7 +1,8 @@
-import { useUserQuizzes } from '../hooks/useData';
-import UserQuizCard from './UserQuizCard';
-import CreateQuizForm from './CreateQuizForm';
-import useAuth from '../hooks/useAuth';
+import { useUserQuizzes } from '../../hooks/useData';
+import UserQuizCard from '../../components/UserQuizCard';
+import CreateQuizForm from '../../components/CreateQuizForm';
+import useAuth from '../../hooks/useAuth';
+import styles from './UserQuizPage.module.css';
 
 const UserQuizPage = () => {
   const { auth } = useAuth();
@@ -12,7 +13,7 @@ const UserQuizPage = () => {
 
   return (
     <div>
-      <h2>My Quizzes</h2>
+      <h2 className={styles.title}>My Quizzes</h2>
       {userQuizzes.map((quiz) => {
         return (
           <UserQuizCard
