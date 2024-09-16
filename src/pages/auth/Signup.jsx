@@ -44,44 +44,52 @@ const Signup = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Sign Up</h2>
       <form onSubmit={handleSubmit} className={styles.form_container}>
-        <input
-          type="text"
-          id="username"
-          placeholder="Username"
-          className={styles.input}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autocomplete="off"
-          required
-        />
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          className={styles.input}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autocomplete="off"
-          required
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          className={styles.input}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          id="passwordConf"
-          placeholder="Password Confirmation"
-          className={styles.input}
-          value={passwordConf}
-          onChange={(e) => setPasswordConf(e.target.value)}
-          required
-        />
+        <div className={styles.input_container}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            className={styles.input}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div className={styles.input_container}>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div className={styles.input_container}>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            className={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className={styles.input_container}>
+          <label htmlFor="passwordConf">Password Confirmation</label>
+          <input
+            type="password"
+            id="passwordConf"
+            className={styles.input}
+            value={passwordConf}
+            onChange={(e) => setPasswordConf(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit" className={styles.button}>
           Sign Up
         </button>

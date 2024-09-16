@@ -42,8 +42,7 @@
     0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-.button:not(:disabled):hover,
-.button:not(:disabled):focus {
+.button:not(:disabled):hover {
   outline: 0;
   background: rgb(229, 194, 0);
   box-shadow:
@@ -55,4 +54,12 @@
   filter: saturate(0.2) opacity(0.5);
   -webkit-filter: saturate(0.2) opacity(0.5);
   cursor: not-allowed;
+}
+
+.popup_bg {
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vw;
+  backdrop-filter: blur(10px) brightness(75%);
 }

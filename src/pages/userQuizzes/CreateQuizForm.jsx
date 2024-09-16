@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import styles from './CreateQuizForm.module.css';
 
-const CreateQuizForm = () => {
+const CreateQuizForm = ({ cancel }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
@@ -32,35 +33,44 @@ const CreateQuizForm = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <h2>Create Quiz</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title: </label>
+      <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.input_container}>
+          <label htmlFor="title">Title</label>
           <input
+            className={styles.input}
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            maxLength="60"
+            maxLength="40"
             required
           />
         </div>
-        <div>
-          <label htmlFor="description">Description: </label>
+        <div className={styles.input_container}>
+          <label htmlFor="description">Description</label>
           <textarea
+            className={styles.input}
             id="description"
+            rows="5"
+            cols="30"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            maxLength="400"
+            maxLength="150"
           />
         </div>
-        <button type="submit">Add Quiz</button>
+        <div className={styles.button_container}>
+          <button className={styles.button} onClick={cancel}>Cancel</button>
+          <button type="submit" className={styles.button}>
+            Add Quiz
+          </button>
+        </div>
       </form>
       {message.map((error) => (
         <p key={error.msg}>{error.msg}</p>
       ))}
-    </>
+    </div>
   );
 };
 

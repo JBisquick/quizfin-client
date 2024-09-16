@@ -43,25 +43,29 @@ const Login = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Login</h2>
       <form onSubmit={handleSubmit} className={styles.form_container}>
-        <input
-          className={styles.input}
-          type="text"
-          id="username"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autocomplete="off"
-          required
-        />
-        <input
-          className={styles.input}
-          type="password"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className={styles.input_container}>
+          <label htmlFor="username">Username</label>
+          <input
+            className={styles.input}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div className={styles.input_container}>
+          <label htmlFor="password">Password</label>
+          <input
+            className={styles.input}
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit" className={styles.button}>
           Login
         </button>

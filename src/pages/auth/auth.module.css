@@ -24,6 +24,13 @@
   gap: 1.25rem;
 }
 
+.input_container {
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   font-size: 1.25rem;
   width: 16rem;
@@ -58,15 +65,6 @@
 
 .button:hover {
   background-color: rgb(249, 250, 251);
-}
-
-.button:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.button:focus-visible {
-  box-shadow: none;
 }
 
 .error {
