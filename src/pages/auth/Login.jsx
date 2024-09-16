@@ -50,6 +50,7 @@ const Login = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          autocomplete="off"
           required
         />
         <input

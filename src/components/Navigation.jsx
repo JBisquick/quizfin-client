@@ -38,7 +38,7 @@ const Navigation = () => {
               <div className={styles.clickable}>Login</div>
             </Link>
             <Link to="/signup">
-              <div className={styles.clickable}>Signup</div>
+              <div className={styles.clickable}>Sign Up</div>
             </Link>
           </>
         ) : (

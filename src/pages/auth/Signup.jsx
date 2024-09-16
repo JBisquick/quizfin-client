@@ -51,6 +51,7 @@ const Signup = () => {
           className={styles.input}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          autocomplete="off"
           required
         />
         <input
@@ -60,6 +61,7 @@ const Signup = () => {
           className={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autocomplete="off"
           required
         />
         <input
