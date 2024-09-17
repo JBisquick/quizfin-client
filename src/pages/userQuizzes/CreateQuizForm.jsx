@@ -45,6 +45,7 @@ const CreateQuizForm = ({ cancel }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             maxLength="40"
+            autocomplete="off"
             required
           />
         </div>
@@ -55,13 +56,16 @@ const CreateQuizForm = ({ cancel }) => {
             id="description"
             rows="5"
             cols="30"
+            autocomplete="off"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             maxLength="150"
           />
         </div>
         <div className={styles.button_container}>
-          <button className={styles.button} onClick={cancel}>Cancel</button>
+          <button className={styles.button} onClick={cancel}>
+            Cancel
+          </button>
           <button type="submit" className={styles.button}>
             Add Quiz
           </button>

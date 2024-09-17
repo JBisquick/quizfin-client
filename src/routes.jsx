@@ -3,7 +3,7 @@ import ErrorPage from './components/ErrorPage';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import UserQuizPage from './pages/userQuizzes/UserQuizPage';
-import EditQuizPage from './components/EditQuizPage';
+import EditQuizPage from './pages/editQuiz/EditQuizPage';
 import HomePage from './pages/home/HomePage';
 import GamePage from './pages/game/GamePage';
 

@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import styles from './EditQuizForm.module.css';
 
-const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
+const EditQuizForm = ({ quiz, cancel }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
-  const [title, setTitle] = useState(initTitle);
-  const [description, setDescription] = useState(initDescription);
-  const [published, setPublished] = useState(initPublished);
+  const [title, setTitle] = useState(quiz.title);
+  const [description, setDescription] = useState(quiz.description);
+  const [published, setPublished] = useState(quiz.published);
   const [message, setMessage] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axiosPrivate.put(
-        `/quiz/${id}`,
+        `/quiz/${quiz.id}`,
         JSON.stringify({ title, description, published })
       );
       if (response.status >= 400) {
@@ -27,7 +28,6 @@ const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
         navigate(0);
       }
     } catch (err) {
-      console.log(err);
       setMessage([{ msg: 'No Server Response' }]);
     }
   };
@@ -38,44 +38,58 @@ const EditQuizForm = ({ initTitle, initDescription, initPublished, id }) => {
   };
 
   return (
-    <>
-      <h4>Edit Quiz Information</h4>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title: </label>
+    <div className={styles.container}>
+      <h2>Edit Quiz</h2>
+      <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.input_container}>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             id="title"
             value={title}
+            className={styles.input}
             onChange={(e) => setTitle(e.target.value)}
-            maxLength="60"
+            maxLength="40"
+            autocomplete="off"
             required
           />
         </div>
-        <div>
-          <label htmlFor="description">Description: </label>
+        <div className={styles.input_container}>
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
             value={description}
+            className={styles.input}
+            rows="5"
+            cols="30"
             onChange={(e) => setDescription(e.target.value)}
-            maxLength="400"
+            autocomplete="off"
+            maxLength="150"
           />
         </div>
-        <div>
-          <label htmlFor="published">Published: </label>
+        <div className={styles.check_container}>
+          <label htmlFor="published">Public</label>
           <input
             type="checkbox"
             id="published"
+            className={styles.check}
             checked={published}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Update</button>
+        <div className={styles.button_container}>
+          <button className={styles.button} onClick={cancel}>
+            Cancel
+          </button>
+          <button type="submit" className={styles.button}>
+            Update
+          </button>
+        </div>
       </form>
       {message.map((error) => (
         <p key={error.msg}>{error.msg}</p>
       ))}
-    </>
+    </div>
   );
 };
 

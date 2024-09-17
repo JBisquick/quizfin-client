@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import styles from './QuestionForm.module.css';
 
-const EditQuestionForm = ({ initQuestion }) => {
+const EditQuestionForm = ({ initQuestion, cancel }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const { quizId } = useParams();
@@ -50,60 +51,79 @@ const EditQuestionForm = ({ initQuestion }) => {
   };
 
   return (
-    <div>
-      <h4>Edit Question</h4>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="question">Question: </label>
-          <input
+    <div className={styles.container}>
+      <h2>Edit Question</h2>
+      <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.input_container}>
+          <label htmlFor="question">Question</label>
+          <textarea
             type="text"
             id="question"
+            maxLength="100"
+            rows="4"
+            cols="25"
+            className={styles.input}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="correctAnswer">Correct Answer:</label>
+        <div className={styles.input_container}>
+          <label htmlFor="correctAnswer">Correct</label>
           <input
             type="text"
             id="correctAnswer"
+            maxLength="25"
+            className={styles.input_correct}
             value={correctAnswer}
             onChange={(e) => setCorrectAnswer(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="incorrect1">Incorrect Answer: </label>
+        <div className={styles.input_container}>
+          <label htmlFor="incorrect1">Incorrect</label>
           <input
             type="text"
             id="incorrect1"
+            maxLength="25"
+            className={styles.input_incorrect}
             value={incorrect1}
             onChange={(e) => setIncorrect1(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="incorrect2">Incorrect Answer: </label>
+        <div className={styles.input_container}>
+          <label htmlFor="incorrect2">Incorrect</label>
           <input
             type="text"
             id="incorrect2"
+            maxLength="25"
+            className={styles.input_incorrect}
             value={incorrect2}
             onChange={(e) => setIncorrect2(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="incorrectAnswer3">Incorrect Answer: </label>
+        <div className={styles.input_container}>
+          <label htmlFor="incorrect3">Incorrect</label>
           <input
             type="text"
             id="incorrect3"
+            maxLength="25"
+            className={styles.input_incorrect}
             value={incorrect3}
             onChange={(e) => setIncorrect3(e.target.value)}
             required
           />
         </div>
-        <button>Update</button>
+        <div className={styles.button_container}>
+          <button className={styles.button} onClick={cancel}>
+            Cancel
+          </button>
+          <button type="submit" className={styles.button}>
+            Update
+          </button>
+        </div>
       </form>
       {message.map((error) => (
         <p key={error.msg}>{error.msg}</p>
