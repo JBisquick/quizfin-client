@@ -34,6 +34,10 @@
   all: unset;
 }
 
+.log_out:focus {
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
 .log_out:hover {
   cursor: pointer;
   background-color: rgb(240, 200, 0);

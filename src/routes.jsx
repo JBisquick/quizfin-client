@@ -1,5 +1,5 @@
 import App from './pages/App';
-import ErrorPage from './components/ErrorPage';
+import ErrorPage from './pages/ErrorPage';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import UserQuizPage from './pages/userQuizzes/UserQuizPage';

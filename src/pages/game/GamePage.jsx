@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Game from '../../components/game';
+import Game from './game';
 import { io } from 'socket.io-client';
+import styles from './Game.module.css';
 const socket = io('http://localhost:3000');
 
 const GamePage = () => {
@@ -34,15 +35,26 @@ const GamePage = () => {
 
   return (
     <div>
-      <div>Join the same room in order to play with friend!</div>
-      <input
-        type="text"
-        value={room}
-        onChange={(e) => {
-          setRoom(e.target.value);
-        }}
-      />
-      <button onClick={joinRoom}>Join Room</button>
+      <h2 className={styles.title}>Play Quiz</h2>
+      <p className={styles.description}>
+        To play with a friend you must input the same code. Once two people have
+        joined the same room then the match will start. There will be 10 rounds,
+        the person with the most correct answers will win.
+      </p>
+      <div className={styles.room_container}>
+        <input
+          className={styles.room_input}
+          type="text"
+          value={room}
+          onChange={(e) => {
+            setRoom(e.target.value);
+          }}
+          autoComplete="off"
+        />
+        <button onClick={joinRoom} className={styles.room_button}>
+          Join Room
+        </button>
+      </div>
     </div>
   );
 };

@@ -54,6 +54,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="100"
             rows="4"
             cols="25"
+            autocomplete="off"
             className={styles.input}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
@@ -101,7 +102,7 @@ const CreateQuestionForm = ({ cancel }) => {
         </div>
         <div className={styles.input_container}>
           <label htmlFor="incorrectAnswer3">Incorrect</label>
-          <text
+          <input
             type="text"
             id="incorrect3"
             className={styles.input_incorrect}

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import CountDown from './CountDown'
+import styles from './Game.module.css';
 
 const Game = ({ socket }) => {
   const [counter, setCounter] = useState(0);
@@ -77,33 +79,37 @@ const Game = ({ socket }) => {
 
   if (result)
     return (
-      <div>
-        <div>
-          Score: {scores[0]} Opponent Score: {scores[1]}
+      <div className={styles.container}>
+        <div className={styles.score_container}>
+          <div>Your Score: {scores[0]} </div>
+          <div>Opponent Score: {scores[1]}</div>
         </div>
-        <div>{result}</div>
+        <h2>{result}</h2>
       </div>
     );
 
   return (
-    <div>
-      <div>
-        Score: {scores[0]} Opponent Score: {scores[1]}
+    <div className={styles.container}>
+       <div className={styles.score_container}>
+        <div>My Score: {scores[0]} </div>
+        <div>Their Score: {scores[1]}</div>
       </div>
-      <div>{counter}</div>
-      <h4>{question}</h4>
-      {answers.map((answer) => (
-        <button
-          key={answer}
-          onClick={() => {
-            submitAnswer(answer);
-          }}
-          disabled={buttonDisable}
-        >
-          {answer}
-        </button>
-      ))}
-      <div>{isCorrect}</div>
+      <CountDown count={counter} />
+      <h3 className={styles.question}>{question}</h3>
+      <div className={styles.button_container}>
+        {answers.map((answer) => (
+          <button
+            key={answer}
+            onClick={() => {
+              submitAnswer(answer);
+            }}
+            disabled={buttonDisable}
+          >
+            {answer}
+          </button>
+        ))}
+      </div>
+      <h4>{isCorrect}</h4>
     </div>
   );
 };
