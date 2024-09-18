@@ -10,6 +10,7 @@ const Game = ({ socket }) => {
   const [answers, setAnswers] = useState([]);
   const [answer, setAnswer] = useState(undefined);
   const [outcome, setOutcome] = useState(false);
+  const [round, setRound] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,6 +38,7 @@ const Game = ({ socket }) => {
     setCounter(10);
     setButtonDisable(false);
     setAnswer(undefined);
+    setRound(newRound => newRound + 1);
   };
 
   const updateCorrect = (answer) => {
@@ -102,6 +104,7 @@ const Game = ({ socket }) => {
     <div className={styles.container}>
       <div className={styles.score_container}>
         <div>My Score: {scores[0]} </div>
+        <div>Round: {round}</div>
         <div>Their Score: {scores[1]}</div>
       </div>
       <CountDown count={counter} />
