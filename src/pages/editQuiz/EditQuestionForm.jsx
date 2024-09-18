@@ -65,7 +65,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
             className={styles.input}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -78,7 +78,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
             className={styles.input_correct}
             value={correctAnswer}
             onChange={(e) => setCorrectAnswer(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -91,7 +91,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
             className={styles.input_incorrect}
             value={incorrect1}
             onChange={(e) => setIncorrect1(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -104,7 +104,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
             className={styles.input_incorrect}
             value={incorrect2}
             onChange={(e) => setIncorrect2(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -117,7 +117,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
             className={styles.input_incorrect}
             value={incorrect3}
             onChange={(e) => setIncorrect3(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>

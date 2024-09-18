@@ -50,7 +50,7 @@ const Signup = () => {
             className={styles.input}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>

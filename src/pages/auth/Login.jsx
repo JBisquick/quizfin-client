@@ -51,7 +51,7 @@ const Login = () => {
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>

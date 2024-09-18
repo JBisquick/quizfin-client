@@ -50,7 +50,7 @@ const EditQuizForm = ({ quiz, cancel }) => {
             className={styles.input}
             onChange={(e) => setTitle(e.target.value)}
             maxLength="40"
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -63,7 +63,7 @@ const EditQuizForm = ({ quiz, cancel }) => {
             rows="5"
             cols="30"
             onChange={(e) => setDescription(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             maxLength="150"
           />
         </div>

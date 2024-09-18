@@ -54,7 +54,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="100"
             rows="4"
             cols="25"
-            autocomplete="off"
+            autoComplete="off"
             className={styles.input}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
@@ -70,7 +70,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="25"
             value={correctAnswer}
             onChange={(e) => setCorrectAnswer(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -83,7 +83,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="25"
             value={incorrect1}
             onChange={(e) => setIncorrect1(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -96,7 +96,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="25"
             value={incorrect2}
             onChange={(e) => setIncorrect2(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -109,7 +109,7 @@ const CreateQuestionForm = ({ cancel }) => {
             maxLength="25"
             value={incorrect3}
             onChange={(e) => setIncorrect3(e.target.value)}
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>

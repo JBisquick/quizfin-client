@@ -13,7 +13,7 @@ const QuestionCard = ({ question }) => {
   const handleDelete = async (e) => {
     try {
       const response = await axiosPrivate.delete(
-        `/quiz/${quizId}/question/${id}`
+        `/quiz/${question.quizId}/question/${question.id}`
       );
       if (response.status >= 400) {
         throw new Error('Server Error');
