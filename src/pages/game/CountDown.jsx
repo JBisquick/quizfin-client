@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import styles from './CountDown.module.css';
 
 const CountDown = ({ count }) => {
-  const stroke = "rgb(32, 128, 165)";
+  const stroke = 'rgb(32, 128, 165)';
   const strokeWidth = 8;
   const size = 52;
   const strokeLinecap = 'round';

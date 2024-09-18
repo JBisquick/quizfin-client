@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CountDown from './CountDown'
+import CountDown from './CountDown';
 import styles from './Game.module.css';
 
 const Game = ({ socket }) => {
@@ -8,8 +8,8 @@ const Game = ({ socket }) => {
   const [scores, setScores] = useState([0, 0]);
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
-  const [isCorrect, setIsCorrect] = useState('');
-  const [result, setResult] = useState(false);
+  const [answer, setAnswer] = useState(undefined);
+  const [outcome, setOutcome] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,23 +21,33 @@ const Game = ({ socket }) => {
     return () => clearTimeout(timer);
   }, [counter]);
 
+  const isCorrect = (buttonText) => {
+    if (answer === undefined) {
+      return styles.unknown;
+    } else if (answer !== buttonText) {
+      return styles.incorrect;
+    } else {
+      return styles.correct;
+    }
+  };
+
   const updateQuestion = (data) => {
     setQuestion(data.question.question);
     setAnswers(data.question.answers);
     setCounter(10);
     setButtonDisable(false);
-    setIsCorrect('');
+    setAnswer(undefined);
   };
 
-  const updateCorrect = () => {
+  const updateCorrect = (answer) => {
     const newScore = scores;
     newScore[0]++;
     setScores(newScore);
-    setIsCorrect('correct!');
+    setAnswer(answer);
   };
 
-  const updateIncorrect = () => {
-    setIsCorrect('incorrect!');
+  const updateIncorrect = (answer) => {
+    setAnswer(answer);
   };
 
   const updateOpponent = () => {
@@ -48,11 +58,11 @@ const Game = ({ socket }) => {
 
   const updateGame = (isWinner) => {
     if (isWinner === 'winner') {
-      setResult('YOU WON!!!!');
+      setOutcome('YOU WON!!!!');
     } else if (isWinner === 'draw') {
-      setResult('A DRAW?! BORING!!!');
+      setOutcome('A DRAW?! BORING!!!');
     } else {
-      setResult('Sadly... you lost :(');
+      setOutcome('Sadly... you lost :(');
     }
   };
 
@@ -77,29 +87,30 @@ const Game = ({ socket }) => {
     setButtonDisable(true);
   };
 
-  if (result)
+  if (outcome)
     return (
       <div className={styles.container}>
         <div className={styles.score_container}>
           <div>Your Score: {scores[0]} </div>
           <div>Opponent Score: {scores[1]}</div>
         </div>
-        <h2>{result}</h2>
+        <h2>{outcome}</h2>
       </div>
     );
 
   return (
     <div className={styles.container}>
-       <div className={styles.score_container}>
+      <div className={styles.score_container}>
         <div>My Score: {scores[0]} </div>
         <div>Their Score: {scores[1]}</div>
       </div>
       <CountDown count={counter} />
       <h3 className={styles.question}>{question}</h3>
       <div className={styles.button_container}>
-        {answers.map((answer) => (
+        {answers.map((answer, i) => (
           <button
-            key={answer}
+            key={i}
+            className={isCorrect(answer)}
             onClick={() => {
               submitAnswer(answer);
             }}
@@ -109,7 +120,6 @@ const Game = ({ socket }) => {
           </button>
         ))}
       </div>
-      <h4>{isCorrect}</h4>
     </div>
   );
 };
