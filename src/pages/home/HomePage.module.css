@@ -16,31 +16,6 @@
   }
 }
 
-.test {
-  border-radius: 0.5rem;
-  width: 16.25rem;
-  height: 18.282rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  background-color: rgb(239, 239, 239);
-
-  @media (max-width: 860px) {
-    width: 8.125rem;
-    height: 8.141rem;
-  }
-}
-
-.temp_image {
-  background-color: lightblue;
-  width: 16.25rem;
-  height: 12.188rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-
-  @media (max-width: 860px) {
-    width: 8.125rem;
-    height: 6.144rem;
-  }
-}
-
 .message {
   text-align: center;
 }

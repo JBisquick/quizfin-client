@@ -25,36 +25,6 @@ const HomePage = () => {
             />
           );
         })}
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
-        <div className={styles.test}>
-          <div className={styles.temp_image}></div>
-        </div>
       </div>
     </>
   );
