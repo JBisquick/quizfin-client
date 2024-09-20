@@ -38,6 +38,7 @@ const EditQuizPage = () => {
               title: userQuestions.title,
               description: userQuestions.description,
               published: userQuestions.published,
+              img: userQuestions.img,
               id: userQuestions.id
             }}
             cancel={handleQuizClick}

@@ -7,7 +7,11 @@ const QuizCard = ({ quiz }) => {
   return (
     <Link to={quizLink}>
       <div className={styles.container}>
-        <div className={styles.temp_image}></div>
+        <img
+          src={`https://ucarecdn.com/${quiz.img}/-/scale_crop/520x390/center/-/quality/smart/`}
+          width="260px"
+          height="195px"
+        />
         <div className={styles.text_container}>
           <h4 className={styles.quiz_title}>{quiz.title}</h4>
           <div className={styles.quiz_author}>By: {quiz.author}</div>

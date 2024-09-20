@@ -38,7 +38,7 @@ const Game = ({ socket }) => {
     setCounter(10);
     setButtonDisable(false);
     setAnswer(undefined);
-    setRound(newRound => newRound + 1);
+    setRound((newRound) => newRound + 1);
   };
 
   const updateCorrect = (answer) => {

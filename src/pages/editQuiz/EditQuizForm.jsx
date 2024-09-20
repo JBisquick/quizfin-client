@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './EditQuizForm.module.css';
+import Uploader from '../../components/Uploader';
 
 const EditQuizForm = ({ quiz, cancel }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [title, setTitle] = useState(quiz.title);
+  const [img, setImg] = useState(quiz.img);
   const [description, setDescription] = useState(quiz.description);
   const [published, setPublished] = useState(quiz.published);
   const [message, setMessage] = useState([]);
@@ -16,7 +18,7 @@ const EditQuizForm = ({ quiz, cancel }) => {
     try {
       const response = await axiosPrivate.put(
         `/quiz/${quiz.id}`,
-        JSON.stringify({ title, description, published })
+        JSON.stringify({ title, description, published, img })
       );
       if (response.status >= 400) {
         throw new Error('Server Error');
@@ -41,6 +43,17 @@ const EditQuizForm = ({ quiz, cancel }) => {
     <div className={styles.container}>
       <h2>Edit Quiz</h2>
       <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.uploader_container}>
+          {img !== '' && (
+            <img
+              src={`https://ucarecdn.com/${img}/-/scale_crop/520x390/center/-/quality/smart/`}
+              width="260px"
+              height="195px"
+            />
+          )}
+          <div>Add Image</div>
+          <Uploader setImg={setImg} />
+        </div>
         <div className={styles.input_container}>
           <label htmlFor="title">Title</label>
           <input
