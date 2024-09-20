@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import Uploader from '../../components/Uploader'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './CreateQuizForm.module.css';
 
@@ -7,6 +8,7 @@ const CreateQuizForm = ({ cancel }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
+  const [img, setImg] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState([]);
 
@@ -15,7 +17,7 @@ const CreateQuizForm = ({ cancel }) => {
     try {
       const response = await axiosPrivate.post(
         '/quiz',
-        JSON.stringify({ title, description })
+        JSON.stringify({ title, description, img })
       );
       if (response.status >= 400) {
         throw new Error('Server Error');
@@ -36,6 +38,17 @@ const CreateQuizForm = ({ cancel }) => {
     <div className={styles.container}>
       <h2>Create Quiz</h2>
       <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.uploader_container}>
+          {img !== '' && (
+            <img
+              src={`https://ucarecdn.com/${img}/-/scale_crop/520x390/center/-/quality/smart/`}
+              width="260px"
+              height="195px"
+            />
+          )}
+          <div>Add Image</div>
+          <Uploader setImg={setImg} />
+        </div>
         <div className={styles.input_container}>
           <label htmlFor="title">Title</label>
           <input

@@ -10,7 +10,7 @@ const HomePage = () => {
 
   return (
     <>
-      <h2 className={styles.title}>Play a Quiz!</h2>
+      <h2 className={styles.title}>Pick a Quiz to Play with a Friend!</h2>
       <div className={styles.container}>
         {quizzes.map((quiz) => {
           return (
