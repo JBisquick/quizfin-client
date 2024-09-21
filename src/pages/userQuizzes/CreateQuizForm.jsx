@@ -58,7 +58,7 @@ const CreateQuizForm = ({ cancel }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             maxLength="40"
-            autocomplete="off"
+            autoComplete="off"
             required
           />
         </div>
@@ -69,7 +69,7 @@ const CreateQuizForm = ({ cancel }) => {
             id="description"
             rows="5"
             cols="30"
-            autocomplete="off"
+            autoComplete="off"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             maxLength="150"

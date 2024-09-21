@@ -49,6 +49,7 @@ const QuestionCard = ({ question }) => {
           <EditQuestionForm
             initQuestion={{
               question: question.text,
+              img: question.img,
               correctAnswer: question.correctAnswer,
               incorrectAnswers: question.incorrectAnswers,
               id: question.id

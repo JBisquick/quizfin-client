@@ -6,6 +6,7 @@ const Game = ({ socket }) => {
   const [counter, setCounter] = useState(0);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [scores, setScores] = useState([0, 0]);
+  const [img, setImg] = useState('');
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [answer, setAnswer] = useState(undefined);
@@ -34,6 +35,7 @@ const Game = ({ socket }) => {
 
   const updateQuestion = (data) => {
     setQuestion(data.question.question);
+    setImg(data.question.img)
     setAnswers(data.question.answers);
     setCounter(10);
     setButtonDisable(false);
@@ -108,6 +110,13 @@ const Game = ({ socket }) => {
         <div>Their Score: {scores[1]}</div>
       </div>
       <CountDown count={counter} />
+      {img !== '' && (
+        <img
+        src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
+        width="320px"
+        height="auto"
+        />
+      )}
       <h3 className={styles.question}>{question}</h3>
       <div className={styles.button_container}>
         {answers.map((answer, i) => (

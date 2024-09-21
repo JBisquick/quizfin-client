@@ -1,6 +1,7 @@
 .container {
-  width: 20rem;
-  margin: 15vh auto;
+  width: 25rem;
+  max-height: 95vh;
+  margin: 2.5vh auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +9,11 @@
   border-radius: 0.75rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-color: rgb(239, 239, 239);
+  overflow: scroll;
+
+  @media (max-width: 425px) {
+    width: 20rem;
+  }
 }
 
 .form_container {
@@ -40,12 +46,16 @@
 .input_incorrect,
 .input {
   font-size: 1.25rem;
-  width: 16rem;
+  width: 20rem;
   padding: 0.25rem;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: none;
   resize: none;
+
+  @media (max-width: 425px) {
+    width: 16rem;
+  }
 }
 
 .check_container {
@@ -100,4 +110,15 @@
   filter: saturate(0.2) opacity(0.5);
   -webkit-filter: saturate(0.2) opacity(0.5);
   cursor: not-allowed;
+}
+
+.uploader_container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  gap: 4px;
+  max-width: 16rem;
 }

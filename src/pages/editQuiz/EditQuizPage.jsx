@@ -52,6 +52,7 @@ const EditQuizPage = () => {
               key={question.id}
               question={{
                 text: question.text,
+                img: question.img,
                 correctAnswer: question.correctAnswer,
                 incorrectAnswers: question.incorrectAnswer,
                 quizId: userQuestions.id,

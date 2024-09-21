@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import Uploader from '../../components/Uploader';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './QuestionForm.module.css';
 
@@ -8,6 +9,8 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
   const navigate = useNavigate();
   const { quizId } = useParams();
   const [question, setQuestion] = useState(initQuestion.question);
+  const [img, setImg] = useState(initQuestion.img)
+  console.log(img);
   const [correctAnswer, setCorrectAnswer] = useState(
     initQuestion.correctAnswer
   );
@@ -28,6 +31,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
       const response = await axiosPrivate.put(
         `/quiz/${quizId}/question/${initQuestion.id}`,
         JSON.stringify({
+          img,
           question,
           correctAnswer,
           incorrectAnswer1: incorrect1,
@@ -54,6 +58,17 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
     <div className={styles.container}>
       <h2>Edit Question</h2>
       <form onSubmit={handleSubmit} className={styles.form_container}>
+        <div className={styles.uploader_container}>
+          {img !== '' && (
+            <img
+              src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
+              width="320px"
+              height="auto"
+            />
+          )}
+          <div>Add Image</div>
+          <Uploader setImg={setImg} />
+        </div>
         <div className={styles.input_container}>
           <label htmlFor="question">Question</label>
           <textarea
