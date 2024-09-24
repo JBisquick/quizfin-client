@@ -14,7 +14,10 @@ const QuizCard = ({ quiz }) => {
         />
         <div className={styles.text_container}>
           <h4 className={styles.quiz_title}>{quiz.title}</h4>
-          <div className={styles.quiz_author}>By: {quiz.author}</div>
+          <div className={styles.info}>
+            <div>By: {quiz.author}</div>
+            <div>Games Played: {quiz.timesPlayed}</div>
+          </div>
           <p className={styles.quiz_description}>{quiz.description}</p>
         </div>
       </div>

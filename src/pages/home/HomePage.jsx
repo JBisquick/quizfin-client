@@ -21,6 +21,7 @@ const HomePage = () => {
                 description: quiz.description,
                 author: quiz.author.username,
                 img: quiz.img,
+                timesPlayed: quiz.timesPlayed,
                 id: quiz.id
               }}
             />
