@@ -35,7 +35,7 @@ const Game = ({ socket }) => {
 
   const updateQuestion = (data) => {
     setQuestion(data.question.question);
-    setImg(data.question.img)
+    setImg(data.question.img);
     setAnswers(data.question.answers);
     setCounter(10);
     setButtonDisable(false);
@@ -112,9 +112,9 @@ const Game = ({ socket }) => {
       <CountDown count={counter} />
       {img !== '' && (
         <img
-        src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
-        width="320px"
-        height="auto"
+          src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
+          width="320px"
+          height="auto"
         />
       )}
       <h3 className={styles.question}>{question}</h3>

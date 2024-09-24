@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import Uploader from '../../components/Uploader'
+import Uploader from '../../components/Uploader';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './CreateQuizForm.module.css';
 
@@ -48,6 +48,9 @@ const CreateQuizForm = ({ cancel }) => {
           )}
           <div>Add Image</div>
           <Uploader setImg={setImg} />
+          <button className={styles.delete} onClick={() => setImg('')} type="button">
+            Delete Image
+          </button>
         </div>
         <div className={styles.input_container}>
           <label htmlFor="title">Title</label>

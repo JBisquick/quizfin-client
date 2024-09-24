@@ -9,7 +9,7 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
   const navigate = useNavigate();
   const { quizId } = useParams();
   const [question, setQuestion] = useState(initQuestion.question);
-  const [img, setImg] = useState(initQuestion.img)
+  const [img, setImg] = useState(initQuestion.img);
   console.log(img);
   const [correctAnswer, setCorrectAnswer] = useState(
     initQuestion.correctAnswer
@@ -68,6 +68,9 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
           )}
           <div>Add Image</div>
           <Uploader setImg={setImg} />
+          <button className={styles.delete} onClick={() => setImg('')} type="button">
+            Delete Image
+          </button>
         </div>
         <div className={styles.input_container}>
           <label htmlFor="question">Question</label>

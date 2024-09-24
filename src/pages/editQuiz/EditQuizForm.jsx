@@ -53,6 +53,9 @@ const EditQuizForm = ({ quiz, cancel }) => {
           )}
           <div>Add Image</div>
           <Uploader setImg={setImg} />
+          <button className={styles.delete} onClick={() => setImg('')} type="button">
+            Delete Image
+          </button>
         </div>
         <div className={styles.input_container}>
           <label htmlFor="title">Title</label>
