@@ -51,17 +51,19 @@ const CreateQuestionForm = ({ cancel }) => {
       <form onSubmit={handleSubmit} className={styles.form_container}>
         <div className={styles.uploader_container}>
           {img !== '' && (
-            <img
-              src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
-              width="320px"
-              height="auto"
-            />
+            <>
+              <img
+                src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
+                width="320px"
+                height="auto"
+              />
+              <button className={styles.delete} onClick={() => setImg('')} type="button">
+                Delete Image
+              </button>
+            </>
           )}
           <div>Add Image</div>
           <Uploader setImg={setImg} />
-          <button className={styles.delete} onClick={() => setImg('')} type="button">
-            Delete Image
-          </button>
         </div>
         <div className={styles.input_container}>
           <label htmlFor="question">Question</label>
