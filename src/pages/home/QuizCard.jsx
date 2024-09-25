@@ -7,16 +7,21 @@ const QuizCard = ({ quiz }) => {
   return (
     <Link to={quizLink}>
       <div className={styles.container}>
-        <img
-          src={`https://ucarecdn.com/${quiz.img}/-/scale_crop/520x390/center/-/quality/smart/`}
-          width="260px"
-          height="195px"
-        />
+        {quiz.img != '' ? (
+          <img
+            className={styles.image}
+            src={`https://ucarecdn.com/${quiz.img}/-/scale_crop/520x390/center/-/quality/smart/`}
+            width="260px"
+            height="195px"
+          />
+        ) : (
+          <div className={styles.temp_image} ></div>
+        )}
         <div className={styles.text_container}>
           <h4 className={styles.quiz_title}>{quiz.title}</h4>
           <div className={styles.info}>
             <div>By: {quiz.author}</div>
-            <div>Games Played: {quiz.timesPlayed}</div>
+            <div>Times Played: {quiz.timesPlayed}</div>
           </div>
           <p className={styles.quiz_description}>{quiz.description}</p>
         </div>
