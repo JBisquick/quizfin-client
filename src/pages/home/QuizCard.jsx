@@ -15,7 +15,7 @@ const QuizCard = ({ quiz }) => {
             height="195px"
           />
         ) : (
-          <div className={styles.temp_image} ></div>
+          <div className={styles.temp_image}></div>
         )}
         <div className={styles.text_container}>
           <h4 className={styles.quiz_title}>{quiz.title}</h4>

@@ -63,7 +63,7 @@ export const useQuizzes = () => {
   useEffect(() => {
     const getQuizzes = async () => {
       try {
-        const response = await axios.get(`/quiz`);
+        const response = await axios.get('/quiz');
         if (response.status >= 400) {
           throw new Error('Server Error');
         }
@@ -78,5 +78,18 @@ export const useQuizzes = () => {
     getQuizzes();
   }, []);
 
-  return { quizzes, error, loading };
+  return { quizzes, error, loading, setQuizzes, setError };
+};
+
+export const useSearchQuiz = async (search) => {
+  try {
+    const response = await axios.get(`/quiz/search/${search}`);
+    if (response.status >= 400) {
+      throw new Error('Server Error');
+    }
+    const data = response.data;
+    return data;
+  } catch (error) {
+    return 'error';
+  }
 };

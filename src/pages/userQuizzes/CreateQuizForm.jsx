@@ -46,7 +46,11 @@ const CreateQuizForm = ({ cancel }) => {
                 width="260px"
                 height="195px"
               />
-              <button className={styles.delete} onClick={() => setImg('')} type="button">
+              <button
+                className={styles.delete}
+                onClick={() => setImg('')}
+                type="button"
+              >
                 Delete Image
               </button>
             </>
