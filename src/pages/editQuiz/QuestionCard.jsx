@@ -1,12 +1,10 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import EditQuestionForm from './EditQuestionForm';
 import styles from './QuestionCard.module.css';
 
-const QuestionCard = ({ question }) => {
+const QuestionCard = ({ question, quiz, setQuiz, index }) => {
   const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [popup, setPopup] = useState(false);
 
@@ -18,8 +16,13 @@ const QuestionCard = ({ question }) => {
       if (response.status >= 400) {
         throw new Error('Server Error');
       }
-      navigate(0);
+
+      const newQuiz = { ...quiz };
+      newQuiz.questions.splice(index, 1);
+      console.log(newQuiz);
+      setQuiz(newQuiz);
     } catch (err) {
+      console.log(err);
       setMessage('No Server Response');
     }
   };
@@ -55,6 +58,9 @@ const QuestionCard = ({ question }) => {
               id: question.id
             }}
             cancel={handleEdit}
+            quiz={quiz}
+            setQuiz={setQuiz}
+            index={index}
           />
         </div>
       )}

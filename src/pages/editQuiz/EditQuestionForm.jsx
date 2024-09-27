@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import Uploader from '../../components/Uploader';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './QuestionForm.module.css';
 
-const EditQuestionForm = ({ initQuestion, cancel }) => {
+const EditQuestionForm = ({ initQuestion, cancel, quiz, setQuiz, index }) => {
   const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
   const { quizId } = useParams();
   const [question, setQuestion] = useState(initQuestion.question);
   const [img, setImg] = useState(initQuestion.img);
-  console.log(img);
   const [correctAnswer, setCorrectAnswer] = useState(
     initQuestion.correctAnswer
   );
@@ -47,7 +45,10 @@ const EditQuestionForm = ({ initQuestion, cancel }) => {
       if (data?.errors) {
         setMessage(data.errors);
       } else {
-        navigate(0);
+        const newQuiz = { ...quiz };
+        newQuiz.questions[index] = data;
+        setQuiz(newQuiz);
+        cancel();
       }
     } catch (err) {
       setMessage([{ msg: 'No Server Response' }]);

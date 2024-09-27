@@ -26,7 +26,7 @@ const CreateQuizForm = ({ cancel, quizzes, setQuizzes }) => {
         setMessage(data.errors);
       } else {
         const newQuizzes = quizzes;
-        newQuizzes.push(data)
+        newQuizzes.push(data);
         setQuizzes(newQuizzes);
         cancel();
       }

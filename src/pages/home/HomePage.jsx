@@ -14,7 +14,7 @@ const HomePage = () => {
     if (response === 'error') {
       setError(true);
     } else if (response === 'empty') {
-      return
+      return;
     } else {
       setQuizzes(response);
     }
@@ -22,8 +22,8 @@ const HomePage = () => {
   };
 
   const handleLoadMore = () => {
-    setRenderAmount((prevCount) => prevCount + 10)
-  }
+    setRenderAmount((prevCount) => prevCount + 10);
+  };
 
   if (error) return <h1 className={styles.message}>Server Error</h1>;
   if (loading) return <h1 className={styles.message}>Loading...</h1>;
@@ -60,7 +60,9 @@ const HomePage = () => {
         })}
       </div>
       {quizzes.length > renderAmount && (
-        <button className={styles.loadButton} onClick={handleLoadMore}>Load More</button>
+        <button className={styles.loadButton} onClick={handleLoadMore}>
+          Load More
+        </button>
       )}
     </>
   );

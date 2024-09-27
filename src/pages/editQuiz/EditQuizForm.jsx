@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './EditQuizForm.module.css';
 import Uploader from '../../components/Uploader';
 
-const EditQuizForm = ({ quiz, cancel }) => {
+const EditQuizForm = ({ quiz, cancel, setQuiz }) => {
   const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
   const [title, setTitle] = useState(quiz.title);
   const [img, setImg] = useState(quiz.img);
   const [description, setDescription] = useState(quiz.description);
@@ -27,7 +25,10 @@ const EditQuizForm = ({ quiz, cancel }) => {
       if (data?.errors) {
         setMessage(data.errors);
       } else {
-        navigate(0);
+        const newQuiz = data;
+        newQuiz.questions = quiz.questions;
+        setQuiz(newQuiz);
+        cancel();
       }
     } catch (err) {
       setMessage([{ msg: 'No Server Response' }]);

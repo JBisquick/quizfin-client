@@ -8,7 +8,8 @@ import styles from './EditQuizPage.module.css';
 
 const EditQuizPage = () => {
   const { quizId } = useParams();
-  const { userQuestions, error, loading } = useQuizQuestions(quizId);
+  const { userQuestions, error, loading, setUserQuestions } =
+    useQuizQuestions(quizId);
   const [quizPopup, setQuizPopup] = useState(false);
   const [questionPopup, setQuestionPopup] = useState(false);
 
@@ -34,19 +35,14 @@ const EditQuizPage = () => {
       {quizPopup && (
         <div className={styles.popup_bg}>
           <EditQuizForm
-            quiz={{
-              title: userQuestions.title,
-              description: userQuestions.description,
-              published: userQuestions.published,
-              img: userQuestions.img,
-              id: userQuestions.id
-            }}
+            quiz={userQuestions}
+            setQuiz={setUserQuestions}
             cancel={handleQuizClick}
           />
         </div>
       )}
       <div className={styles.question_container}>
-        {userQuestions.questions.map((question) => {
+        {userQuestions.questions.map((question, i) => {
           return (
             <QuestionCard
               key={question.id}
@@ -58,13 +54,20 @@ const EditQuizPage = () => {
                 quizId: userQuestions.id,
                 id: question.id
               }}
+              quiz={userQuestions}
+              setQuiz={setUserQuestions}
+              index={i}
             />
           );
         })}
       </div>
       {questionPopup && (
         <div className={styles.popup_bg}>
-          <CreateQuestionForm cancel={handleQuestionClick} />
+          <CreateQuestionForm
+            cancel={handleQuestionClick}
+            quiz={userQuestions}
+            setQuiz={setUserQuestions}
+          />
         </div>
       )}
       <button className={styles.quest_button} onClick={handleQuestionClick}>

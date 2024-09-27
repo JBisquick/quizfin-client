@@ -28,13 +28,13 @@ const GamePage = () => {
   };
 
   useEffect(() => {
-    socket.on('joined', joinedRoom)
-    socket.on('full', fullRoom)
+    socket.on('joined', joinedRoom);
+    socket.on('full', fullRoom);
     socket.on('start_game', startGame);
 
     return () => {
-      socket.on('joined', joinedRoom)
-      socket.off('full', fullRoom)
+      socket.on('joined', joinedRoom);
+      socket.off('full', fullRoom);
       socket.off('start_game', startGame);
     };
   }, [socket]);

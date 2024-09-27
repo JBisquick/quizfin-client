@@ -7,10 +7,10 @@ import styles from './UserQuizPage.module.css';
 
 const UserQuizPage = () => {
   const { auth } = useAuth();
-  const { userQuizzes, error, loading, setUserQuizzes } = useUserQuizzes(auth.id);
+  const { userQuizzes, error, loading, setUserQuizzes } = useUserQuizzes(
+    auth.id
+  );
   const [popup, setPopup] = useState(false);
-
-  console.log(userQuizzes);
 
   const handleClick = () => {
     setPopup(!popup);
@@ -46,8 +46,11 @@ const UserQuizPage = () => {
       </button>
       {popup && (
         <div className={styles.popup_bg}>
-          <CreateQuizForm cancel={handleClick} quizzes={userQuizzes}
-              setQuizzes={setUserQuizzes} />
+          <CreateQuizForm
+            cancel={handleClick}
+            quizzes={userQuizzes}
+            setQuizzes={setUserQuizzes}
+          />
         </div>
       )}
     </>
