@@ -83,6 +83,7 @@ export const useQuizzes = () => {
 
 export const useSearchQuiz = async (search) => {
   try {
+    if (search === '') return 'empty';
     const response = await axios.get(`/quiz/search/${search}`);
     if (response.status >= 400) {
       throw new Error('Server Error');
