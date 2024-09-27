@@ -8,13 +8,18 @@ const UserQuizCard = ({ quiz }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
+  const [deletePopup, setDeletePopup] = useState(false);
   const toLink = `/my-quizzes/${quiz.id}`;
 
   const createFormat = quiz.createDate.split('', 10).join('');
   const updateFormat = quiz.updateDate.split('', 10).join('');
 
-  const handleDelete = async (e) => {
+  const handleDeletePopup = (e) => {
     e.preventDefault();
+    setDeletePopup(!deletePopup)
+  }
+
+  const handleDelete = async (e) => {
     try {
       const response = await axiosPrivate.delete(`/quiz/${quiz.id}`);
       if (response.status >= 400) {
@@ -27,6 +32,7 @@ const UserQuizCard = ({ quiz }) => {
   };
 
   return (
+    <>
     <Link to={toLink}>
       <div className={styles.container}>
         <h4 className={styles.title}>{quiz.title}</h4>
@@ -35,12 +41,24 @@ const UserQuizCard = ({ quiz }) => {
         <div className={styles.info}>
           Published: {quiz.published.toString()}
         </div>
-        <button onClick={handleDelete} className={styles.button}>
+        <button onClick={handleDeletePopup} className={styles.button}>
           Delete Quiz
         </button>
-        <div>{message}</div>
       </div>
     </Link>
+    {deletePopup && (
+      <div className={styles.popup_bg}>
+        <div className={styles.delete_container}>
+          <h4>Are you sure you want to delete {quiz.title}</h4>
+          <div className={styles.button_container}>
+            <button className={styles.button} onClick={handleDelete}>Yes</button>
+            <button className={styles.button} onClick={handleDeletePopup}>No</button>
+          </div>
+          <div>{message}</div>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 
