@@ -94,3 +94,29 @@ export const useSearchQuiz = async (search) => {
     return 'error';
   }
 };
+
+export const useQuiz = (id) => {
+  const [quiz, setQuiz] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getQuizzes = async () => {
+      try {
+        const response = await axios.get(`/quiz/${id}`);
+        if (response.status >= 400) {
+          throw new Error('Server Error');
+        }
+        const data = response.data;
+        setQuiz(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    getQuizzes();
+  }, []);
+
+  return { quiz, error, loading };
+};

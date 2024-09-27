@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useQuiz } from '../../hooks/useData';
 import Game from './game';
 import { io } from 'socket.io-client';
 import styles from './Game.module.css';
@@ -7,6 +8,7 @@ const socket = io('http://localhost:3000');
 
 const GamePage = () => {
   const { quizId } = useParams();
+  const { quiz, error, loading} = useQuiz(quizId);
   const [message, setMessage] = useState('');
   const [room, setRoom] = useState('');
   const [gameStart, setGameStart] = useState(false);
@@ -46,9 +48,12 @@ const GamePage = () => {
       </>
     );
 
+  if (error) return <h1 className={styles.message}>Server Error</h1>;
+  if (loading) return <h1 className={styles.message}>Loading...</h1>;
+
   return (
     <div>
-      <h2 className={styles.title}>Play Quiz</h2>
+      <h2 className={styles.title}>{quiz.title}</h2>
       <p className={styles.description}>
         To play with a friend you must input the same code. Once two people have
         joined the same room then the match will start. There will be 10 rounds,

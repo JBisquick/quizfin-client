@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CountDown from './CountDown';
 import styles from './Game.module.css';
 
 const Game = ({ socket, room }) => {
+  const navigate = useNavigate();
   const [counter, setCounter] = useState(0);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [scores, setScores] = useState([0, 0]);
@@ -100,6 +102,9 @@ const Game = ({ socket, room }) => {
           <div>Opponent Score: {scores[1]}</div>
         </div>
         <h2>{outcome}</h2>
+        <button onClick={() => navigate(0)} className={styles.room_button}>
+          Play Again
+        </button>
       </div>
     );
 
