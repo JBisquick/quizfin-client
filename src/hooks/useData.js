@@ -26,7 +26,7 @@ export const useUserQuizzes = (userId) => {
     getMyQuizzes();
   }, []);
 
-  return { userQuizzes, error, loading };
+  return { userQuizzes, error, loading, setUserQuizzes };
 };
 
 export const useQuizQuestions = (quizId) => {
@@ -52,7 +52,7 @@ export const useQuizQuestions = (quizId) => {
     getQuizQuestions();
   }, []);
 
-  return { userQuestions, error, loading };
+  return { userQuestions, error, loading, setUserQuestions };
 };
 
 export const useQuizzes = () => {

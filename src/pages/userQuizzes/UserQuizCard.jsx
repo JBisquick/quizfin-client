@@ -1,12 +1,10 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './UserQuizCard.module.css';
 
-const UserQuizCard = ({ quiz }) => {
+const UserQuizCard = ({ quizzes, setQuizzes, quiz, index }) => {
   const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [deletePopup, setDeletePopup] = useState(false);
   const toLink = `/my-quizzes/${quiz.id}`;
@@ -16,7 +14,7 @@ const UserQuizCard = ({ quiz }) => {
 
   const handleDeletePopup = (e) => {
     e.preventDefault();
-    setDeletePopup(!deletePopup)
+    setDeletePopup(!deletePopup);
   }
 
   const handleDelete = async (e) => {
@@ -25,7 +23,8 @@ const UserQuizCard = ({ quiz }) => {
       if (response.status >= 400) {
         throw new Error('Server Error');
       }
-      navigate(0);
+      setQuizzes(quizzes.filter((_, i) => i !== index));
+      setDeletePopup(!deletePopup);
     } catch (err) {
       setMessage('No Server Response');
     }
