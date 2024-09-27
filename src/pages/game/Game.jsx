@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import CountDown from './CountDown';
 import styles from './Game.module.css';
 
-const Game = ({ socket }) => {
+const Game = ({ socket, room }) => {
   const [counter, setCounter] = useState(0);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [scores, setScores] = useState([0, 0]);
@@ -33,7 +33,8 @@ const Game = ({ socket }) => {
     }
   };
 
-  const updateQuestion = (data) => {
+  const updateQuestion = (data, roomId) => {
+    if (room !== roomId) return;
     setQuestion(data.question.question);
     setImg(data.question.img);
     setAnswers(data.question.answers);

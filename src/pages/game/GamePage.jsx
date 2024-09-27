@@ -7,6 +7,7 @@ const socket = io('http://localhost:3000');
 
 const GamePage = () => {
   const { quizId } = useParams();
+  const [message, setMessage] = useState('');
   const [room, setRoom] = useState('');
   const [gameStart, setGameStart] = useState(false);
 
@@ -18,10 +19,22 @@ const GamePage = () => {
     setGameStart(true);
   };
 
+  const fullRoom = () => {
+    setMessage('The current room is full');
+  };
+
+  const joinedRoom = (room) => {
+    setMessage(`Joined ${room}`);
+  };
+
   useEffect(() => {
+    socket.on('joined', joinedRoom)
+    socket.on('full', fullRoom)
     socket.on('start_game', startGame);
 
     return () => {
+      socket.on('joined', joinedRoom)
+      socket.off('full', fullRoom)
       socket.off('start_game', startGame);
     };
   }, [socket]);
@@ -29,7 +42,7 @@ const GamePage = () => {
   if (gameStart)
     return (
       <>
-        <Game socket={socket} />
+        <Game socket={socket} room={room} />
       </>
     );
 
@@ -41,6 +54,7 @@ const GamePage = () => {
         joined the same room then the match will start. There will be 10 rounds,
         the person with the most correct answers will win.
       </p>
+      <p className={styles.description}>{message}</p>
       <div className={styles.room_container}>
         <input
           className={styles.room_input}
