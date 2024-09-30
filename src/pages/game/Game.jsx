@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountDown from './CountDown';
 import styles from './Game.module.css';
+import incorrectSound from '../../sounds/incorrect.wav'
+import correctSound from '../../sounds/correct.wav'
 
 const Game = ({ socket, room }) => {
   const navigate = useNavigate();
@@ -49,11 +51,13 @@ const Game = ({ socket, room }) => {
   const updateCorrect = (answer) => {
     const newScore = scores;
     newScore[0]++;
+    new Audio(correctSound).play();
     setScores(newScore);
     setAnswer(answer);
   };
 
   const updateIncorrect = (answer) => {
+    new Audio(incorrectSound).play();
     setAnswer(answer);
   };
 
