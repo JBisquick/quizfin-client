@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import useLogout from '../hooks/useLogout';
 import styles from './Navigation.module.css';
+import logo from '../imgs/logo.png';
 
 const Navigation = () => {
   const { auth } = useAuth();
@@ -16,8 +17,8 @@ const Navigation = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo_container}>
-        <div>Picture</div>
-        <div>Quizz-App</div>
+        <img src={logo} className={styles.logo_container} height="48px"/>
+        <div>Quizfin</div>
       </div>
       <div className={styles.menu_container}>
         <Link to="/">
@@ -43,7 +44,7 @@ const Navigation = () => {
           </>
         ) : (
           <>
-            <div>Hello {auth.username}!</div>
+            <div className={styles.username}>{auth.username}</div>
             <button onClick={signOut} className={styles.log_out}>
               Log Out
             </button>

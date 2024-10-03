@@ -3,6 +3,9 @@
 }
 
 .description {
+  margin: 8px;
+  align-self: center;
+  max-width: 50rem;
   text-align: center;
   font-weight: 500;
 }
@@ -31,7 +34,7 @@
   font-size: 1.5rem;
   height: 3rem;
   max-width: 12rem;
-  background-color: rgb(255, 215, 0);
+  background-color: var(--color-yellow);
   border-radius: 12px;
   color: #000;
   cursor: pointer;
@@ -51,7 +54,7 @@
 
 .room_button:not(:disabled):hover {
   outline: 0;
-  background: rgb(229, 194, 0);
+  background: var(--color-yellow-hover);
   box-shadow:
     0 0 0 2px rgba(0, 0, 0, 0.2),
     0 3px 8px 0 rgba(0, 0, 0, 0.15);
@@ -81,7 +84,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
@@ -118,6 +121,7 @@
 
 .button_container button:hover,
 .button_container button:focus {
+  cursor: pointer;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);

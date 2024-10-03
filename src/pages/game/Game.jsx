@@ -69,11 +69,11 @@ const Game = ({ socket, room }) => {
 
   const updateGame = (isWinner) => {
     if (isWinner === 'winner') {
-      setOutcome('YOU WON!!!!');
+      setOutcome('You Win!');
     } else if (isWinner === 'draw') {
-      setOutcome('A DRAW?! BORING!!!');
+      setOutcome('Draw.');
     } else {
-      setOutcome('Sadly... you lost :(');
+      setOutcome('You Lost...');
     }
   };
 

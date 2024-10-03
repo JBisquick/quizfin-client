@@ -79,6 +79,7 @@
 }
 
 .delete_container {
+  text-align: center;
   padding: 16px 12px;
   width: 20rem;
   margin: 30vh auto;

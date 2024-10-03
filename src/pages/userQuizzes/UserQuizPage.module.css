@@ -7,6 +7,8 @@
 }
 
 .container {
+  max-width: 100rem;
+  align-self: center;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.25rem);
@@ -24,7 +26,7 @@
   max-width: 16rem;
   font-size: 1.5rem;
   height: 4rem;
-  background-color: rgb(255, 215, 0);
+  background-color: var(--color-yellow);
   border-radius: 12px;
   color: #000;
   cursor: pointer;
@@ -45,7 +47,7 @@
 
 .button:not(:disabled):hover {
   outline: 0;
-  background: rgb(229, 194, 0);
+  background: var(--color-yellow-hover);
   box-shadow:
     0 0 0 2px rgba(0, 0, 0, 0.2),
     0 3px 8px 0 rgba(0, 0, 0, 0.15);

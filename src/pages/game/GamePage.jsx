@@ -52,7 +52,7 @@ const GamePage = () => {
   if (loading) return <h1 className={styles.message}>Loading...</h1>;
 
   return (
-    <div>
+    <>
       <h2 className={styles.title}>{quiz.title}</h2>
       <p className={styles.description}>
         To play with a friend you must input the same code. Once two people have
@@ -74,7 +74,7 @@ const GamePage = () => {
           Join Room
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
