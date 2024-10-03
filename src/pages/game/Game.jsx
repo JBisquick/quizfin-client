@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountDown from './CountDown';
 import styles from './Game.module.css';
-import incorrectSound from '../../sounds/incorrect.wav'
-import correctSound from '../../sounds/correct.wav'
+import incorrectSound from '../../sounds/incorrect.wav';
+import correctSound from '../../sounds/correct.wav';
 
 const Game = ({ socket, room }) => {
   const navigate = useNavigate();

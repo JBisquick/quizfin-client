@@ -13,8 +13,8 @@ textarea {
 :root {
   --color-yellow: rgb(254, 236, 91);
   --color-yellow-hover: rgb(229, 194, 0);
-  --color-blue: rgb(32,129,165);
-  --color-pink: rgb(161,130,160)
+  --color-blue: rgb(32, 129, 165);
+  --color-pink: rgb(161, 130, 160);
 }
 
 .mother-container {

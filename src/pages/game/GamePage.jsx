@@ -8,7 +8,7 @@ const socket = io('http://localhost:3000');
 
 const GamePage = () => {
   const { quizId } = useParams();
-  const { quiz, error, loading} = useQuiz(quizId);
+  const { quiz, error, loading } = useQuiz(quizId);
   const [message, setMessage] = useState('');
   const [room, setRoom] = useState('');
   const [gameStart, setGameStart] = useState(false);

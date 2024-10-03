@@ -37,9 +37,7 @@ const UserQuizCard = ({ quizzes, setQuizzes, quiz, index }) => {
           <h4 className={styles.title}>{quiz.title}</h4>
           <div className={styles.info}>Created: {createFormat}</div>
           <div className={styles.info}>Updated: {updateFormat}</div>
-          <div className={styles.info}>
-            Public: {quiz.published.toString()}
-          </div>
+          <div className={styles.info}>Public: {quiz.published.toString()}</div>
           <button onClick={handleDeletePopup} className={styles.button}>
             Delete Quiz
           </button>

@@ -17,7 +17,7 @@ const Navigation = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo_container}>
-        <img src={logo} className={styles.logo_container} height="48px"/>
+        <img src={logo} className={styles.logo_container} height="48px" />
         <div>Quizfin</div>
       </div>
       <div className={styles.menu_container}>
