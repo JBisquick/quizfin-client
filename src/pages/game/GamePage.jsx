@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuiz } from '../../hooks/useData';
-import Game from './game';
+import Game from './Game';
 import { io } from 'socket.io-client';
 import styles from './Game.module.css';
 const socket = io('http://localhost:3000');

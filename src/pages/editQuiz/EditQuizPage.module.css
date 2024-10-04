@@ -68,6 +68,7 @@
 }
 
 .question_container {
+  width: 100vw;
   max-width: 100rem;
   align-self: center;
   padding: 15px;
