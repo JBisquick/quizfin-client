@@ -17,7 +17,7 @@ const UserQuizPage = () => {
   };
 
   if (error) return <h1 className={styles.message}>Server Error</h1>;
-  if (loading) return <h1 className={styles.message}>Server Error</h1>;
+  if (loading) return <h1 className={styles.message}>Loading...</h1>;
 
   return (
     <>
