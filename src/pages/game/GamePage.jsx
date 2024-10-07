@@ -4,7 +4,7 @@ import { useQuiz } from '../../hooks/useData';
 import Game from './Game';
 import { io } from 'socket.io-client';
 import styles from './Game.module.css';
-const socket = io('http://localhost:3000');
+const socket = io('https://quizfin-server.up.railway.app');
 
 const GamePage = () => {
   const { quizId } = useParams();
