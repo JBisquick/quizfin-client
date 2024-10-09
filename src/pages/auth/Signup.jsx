@@ -41,6 +41,10 @@ const Signup = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Sign Up</h2>
+      <p className={styles.description}>
+        Creating an account is necessary only if you intend to create quizzes.
+        You are able to play quiz games without creating an account.
+      </p>
       <form onSubmit={handleSubmit} className={styles.form_container}>
         <div className={styles.input_container}>
           <label htmlFor="username">Username</label>

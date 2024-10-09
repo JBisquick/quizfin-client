@@ -72,3 +72,11 @@
   font-size: 1rem;
   color: rgb(237, 67, 55);
 }
+
+.description {
+  margin: 8px;
+  align-self: center;
+  max-width: 50rem;
+  text-align: center;
+  font-weight: 500;
+}

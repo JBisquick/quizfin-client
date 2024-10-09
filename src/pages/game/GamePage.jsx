@@ -56,7 +56,7 @@ const GamePage = () => {
       <h2 className={styles.title}>{quiz.title}</h2>
       <p className={styles.description}>
         To play with a friend you must input the same code. Once two people have
-        joined the same room then the match will start. There will be 10 rounds,
+        joined the same room, the match will start. There will be 10 rounds, and
         the person with the most correct answers will win.
       </p>
       <p className={styles.description}>{message}</p>

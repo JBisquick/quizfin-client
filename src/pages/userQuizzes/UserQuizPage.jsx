@@ -22,6 +22,10 @@ const UserQuizPage = () => {
   return (
     <>
       <h2 className={styles.title}>Edit your Quizzes!</h2>
+      <p className={styles.description}>
+        Creating an account is necessary only if you intend to create quizzes.
+        You are able to play quiz games without creating an account.
+      </p>
       <div className={styles.container}>
         {userQuizzes.map((quiz, i) => {
           return (
