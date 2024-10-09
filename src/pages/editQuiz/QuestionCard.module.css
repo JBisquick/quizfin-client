@@ -12,7 +12,7 @@
   transition: box-shadow 0.3s;
 
   @media (max-width: 860px) {
-    width: 12rem;
+    width: 10.5rem;
     height: 14rem;
   }
 }

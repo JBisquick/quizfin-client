@@ -3,12 +3,23 @@
 }
 
 .title_container {
-  width: 40rem;
+  width: 100vw;
+  text-align: center;
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.title_container h2 {
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
 }
 
 .popup_bg {
@@ -75,10 +86,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.25rem);
   justify-content: center;
-  grid-gap: 25px;
+  grid-gap: 24px;
   background-color: rgb(224, 224, 224);
 
   @media (max-width: 860px) {
-    grid-template-columns: repeat(auto-fit, 12rem);
+    grid-gap: 12px;
+    grid-template-columns: repeat(auto-fit, 10.5rem);
   }
 }

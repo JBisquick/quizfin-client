@@ -104,6 +104,7 @@
 }
 
 .button_container {
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
