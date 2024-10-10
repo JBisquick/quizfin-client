@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Uploader from '../../components/Uploader';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './QuestionForm.module.css';
+import QuestionImage from '../../components/QuestionImage';
 
 const EditQuestionForm = ({ initQuestion, cancel, quiz, setQuiz, index }) => {
   const axiosPrivate = useAxiosPrivate();
@@ -62,11 +63,7 @@ const EditQuestionForm = ({ initQuestion, cancel, quiz, setQuiz, index }) => {
         <div className={styles.uploader_container}>
           {img !== '' && (
             <>
-              <img
-                src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
-                width="320px"
-                height="auto"
-              />
+              <QuestionImage img={img} />
               <button
                 className={styles.delete}
                 onClick={() => setImg('')}

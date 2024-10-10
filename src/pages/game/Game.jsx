@@ -4,6 +4,7 @@ import CountDown from './CountDown';
 import styles from './Game.module.css';
 import incorrectSound from '../../sounds/incorrect.wav';
 import correctSound from '../../sounds/correct.wav';
+import QuestionImage from '../../components/QuestionImage';
 
 const Game = ({ socket, room }) => {
   const navigate = useNavigate();
@@ -121,11 +122,7 @@ const Game = ({ socket, room }) => {
       </div>
       <CountDown count={counter} />
       {img !== '' && (
-        <img
-          src={`https://ucarecdn.com/${img}/-/preview/640x640/-/quality/smart/`}
-          width="320px"
-          height="auto"
-        />
+        <QuestionImage img={img} />
       )}
       <h3 className={styles.question}>{question}</h3>
       <div className={styles.button_container}>

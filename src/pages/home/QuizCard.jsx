@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './QuizCard.module.css';
+import QuizImage from '../../components/QuizImage';
 
 const QuizCard = ({ quiz }) => {
   const quizLink = `play-quiz/${quiz.id}`;
@@ -8,12 +9,9 @@ const QuizCard = ({ quiz }) => {
     <Link to={quizLink}>
       <div className={styles.container}>
         {quiz.img != '' ? (
-          <img
-            className={styles.image}
-            src={`https://ucarecdn.com/${quiz.img}/-/scale_crop/520x390/center/-/quality/smart/`}
-            width="260px"
-            height="195px"
-          />
+          <div className={styles.image} >
+            <QuizImage img={quiz.img} />
+          </div>
         ) : (
           <div className={styles.temp_image}></div>
         )}

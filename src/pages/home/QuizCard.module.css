@@ -12,7 +12,7 @@
   }
 }
 
-.image {
+.image img {
   @media (max-width: 860px) {
     width: 8.125rem;
     height: 6.144rem;

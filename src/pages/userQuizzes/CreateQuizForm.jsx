@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Uploader from '../../components/Uploader';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import styles from './CreateQuizForm.module.css';
+import QuestionImage from '../../components/QuestionImage';
 
 const CreateQuizForm = ({ cancel, quizzes, setQuizzes }) => {
   const axiosPrivate = useAxiosPrivate();
@@ -42,11 +43,7 @@ const CreateQuizForm = ({ cancel, quizzes, setQuizzes }) => {
         <div className={styles.uploader_container}>
           {img !== '' && (
             <>
-              <img
-                src={`https://ucarecdn.com/${img}/-/scale_crop/520x390/center/-/quality/smart/`}
-                width="260px"
-                height="195px"
-              />
+              <QuestionImage img={img} />
               <button
                 className={styles.delete}
                 onClick={() => setImg('')}
