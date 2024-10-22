@@ -23,8 +23,7 @@ const UserQuizPage = () => {
     <>
       <h2 className={styles.title}>Edit your Quizzes!</h2>
       <p className={styles.description}>
-        Creating an account is necessary only if you intend to create quizzes.
-        You are able to play quiz games without creating an account.
+        In order to make your quiz public you must have at least 10 questions. When your quiz is being played, 10 random questions will be chosen from your quiz pool.
       </p>
       <div className={styles.container}>
         {userQuizzes.map((quiz, i) => {
